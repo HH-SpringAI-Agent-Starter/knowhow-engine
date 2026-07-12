@@ -63,18 +63,32 @@ if (MODE === 'http' || MODE === 'both') {
 }
 
 // ========================================
-// MCP Tool 模式 (stdio)
+// MCP Server (SSE — 标准 MCP 协议)
 // ========================================
 if (MODE === 'mcp' || MODE === 'both') {
-  const { getToolDefinition, executeAction } = require('./lib/mcp-adapter');
+  const McpServer = require('./mcp/server');
+  const mcpServer = new McpServer();
 
-  // MCP Tool 端点 (HTTP 方式, 兼容 sse)
-  app.post('/api/mcp/tool/chain_query', (req, res) => {
-    const { action, params } = req.body;
-    if (!action) return res.status(400).json({ error: 'action required' });
-    
-    const result = executeAction(action, params);
-    res.json(result);
+  // SSE 连接端点 (MCP 标准协议)
+  app.get('/mcp/sse', (req, res) => mcpServer.handleSseConnect(req, res));
+  app.post('/mcp/message', (req, res) => mcpServer.handleMessage(req, res));
+
+  // 兼容旧端点
+  app.get('/api/mcp/sse', (req, res) => mcpServer.handleSseConnect(req, res));
+  app.post('/api/mcp/message', (req, res) => mcpServer.handleMessage(req, res));
+
+  // MCP 能力声明
+  app.get('/api/mcp', (req, res) => {
+    res.json({
+      protocol: '2025-03-26',
+      server_name: 'knowhow-engine',
+      server_version: '1.0.0',
+      capabilities: { tools: {} },
+      endpoints: {
+        sse: '/mcp/sse',
+        message: '/mcp/message'
+      }
+    });
   });
 
   // STDIO MCP 模式 (通过 --mcp-stdio 标志启动)
@@ -83,15 +97,30 @@ if (MODE === 'mcp' || MODE === 'both') {
     const rl = readline.createInterface({ input: process.stdin });
     rl.on('line', (line) => {
       try {
-        const { id, action, params } = JSON.parse(line);
-        const result = executeAction(action, params);
-        process.stdout.write(JSON.stringify({ id, result }) + '\n');
+        const msg = JSON.parse(line);
+        const { id, method, params } = msg;
+        const { getToolDefinition, executeAction } = require('./lib/mcp-adapter');
+        
+        let result;
+        switch (method) {
+          case 'initialize':
+            result = { protocolVersion: '2025-03-26', capabilities: { tools: {} }, serverInfo: { name: 'knowhow-engine', version: '1.0.0' } };
+            break;
+          case 'tools/list':
+            result = { tools: [{ name: 'chain_query', description: 'Know-how Library Engine tool', inputSchema: { type: 'object', properties: { action: { type: 'string' } } } }] };
+            break;
+          default:
+            result = { content: [{ type: 'text', text: JSON.stringify(executeAction('list', {})) }] };
+        }
+        process.stdout.write(JSON.stringify({ jsonrpc: '2.0', id, result }) + '\n');
       } catch (e) {
-        process.stderr.write(`error: ${e.message}\n`);
+        process.stderr.write(`Error: ${e.message}\n`);
       }
     });
     console.log('[knowhow-engine] MCP stdio mode ready');
   }
+
+  console.log(`[knowhow-engine] MCP SSE ready at /mcp/sse`);
 }
 
 // ========================================
