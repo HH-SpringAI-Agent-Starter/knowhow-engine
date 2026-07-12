@@ -8,7 +8,7 @@
  * Supports one tool: chain_query (10 actions)
  */
 
-const { getToolDefinition, executeAction } = require('./mcp-adapter');
+const { getToolDefinition, executeAction } = require('../lib/mcp-adapter');
 
 class McpServer {
   constructor() {
