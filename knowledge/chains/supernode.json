@@ -1,0 +1,153 @@
+{
+  "chain_id": "supernode",
+  "name": "超节点(AI SuperPoD)产业链",
+  "version": "v2.0",
+  "category": "AI/半导体",
+  "confidence_weight": 70,
+  "normalized_tags": [
+    "超节点",
+    "SuperPoD",
+    "中科曙光",
+    "浪潮信息",
+    "紫光股份",
+    "高速连接器",
+    "WAIC"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 15,
+    "demand_boost": "万卡集群需求爆发",
+    "policy_catalyst": "国产算力政策加速",
+    "other": "7/17 WAIC 2026华为Atlas 950首秀"
+  },
+  "conduction_path": {
+    "description": "大模型万亿参数→传统集群三堵墙→超节点成最小部署单元→整机集成→高速互联→液冷→供电→连接器",
+    "steps": [
+      {
+        "step": 1,
+        "from": "大模型参数突破",
+        "to": "传统集群通信墙",
+        "lag_days": [
+          3,
+          7
+        ]
+      },
+      {
+        "step": 2,
+        "from": "超节点标准部署",
+        "to": "整机集成商受益",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 3,
+        "from": "整机",
+        "to": "高速互联零部件",
+        "lag_days": [
+          14,
+          30
+        ]
+      },
+      {
+        "step": 4,
+        "from": "零部件",
+        "to": "液冷+供电+PCB",
+        "lag_days": [
+          21,
+          45
+        ]
+      }
+    ],
+    "total_lag_days": [
+      7,
+      45
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "整机集成+高速互联",
+    "bottleneck_reason": "超节点需要全栈系统集成能力",
+    "pricing_power_rating": "B"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "整机集成",
+      "stocks": [
+        {
+          "code": "603019",
+          "name": "中科曙光",
+          "reason": "ScaleX 640卡+液冷·HPC龙头",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "000977",
+          "name": "浪潮信息",
+          "reason": "超节点Q3放量+H1+226~288%",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "000938",
+          "name": "紫光股份",
+          "reason": "新华三超节点·9天+40%",
+          "position_tag": "🥇待升S级"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "高速互联+网络",
+      "stocks": [
+        {
+          "code": "002179",
+          "name": "中航光电",
+          "reason": "高速连接器龙头·224G铜缆",
+          "position_tag": "⭐⭐S级B"
+        },
+        {
+          "code": "002025",
+          "name": "航天电器",
+          "reason": "高速连接器+军工",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "600498",
+          "name": "烽火通信",
+          "reason": "DSP芯片唯一主板标的",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "000063",
+          "name": "中兴通讯",
+          "reason": "Matrix超节点·WAIC首发",
+          "position_tag": "🔍系统推荐"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "WAIC 7/17超节点展示",
+      "运营商AI招标超预期"
+    ],
+    "bearish": [
+      "WAIC不及预期"
+    ],
+    "data_sources": [
+      "WAIC 2026",
+      "公司公告"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "大厂转向海外算力"
+  },
+  "entry_timing": {
+    "buy_signal_1": "WAIC 7/17前1-2周建仓",
+    "avg_hold_days": 30,
+    "stop_loss": "WAIC展示不及预期"
+  },
+  "historical_validation": {
+    "verification_count": 1,
+    "win_rate_pct": 70,
+    "avg_gain_pct": 20,
+    "last_verified": "2026-07-11"
+  }
+}

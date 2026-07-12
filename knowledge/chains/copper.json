@@ -1,0 +1,123 @@
+{
+  "chain_id": "copper",
+  "name": "铜/有色金属涨价链",
+  "version": "v2.0",
+  "category": "化工/材料",
+  "confidence_weight": 65,
+  "normalized_tags": [
+    "铜涨价",
+    "铜矿",
+    "江西铜业",
+    "西部矿业",
+    "铜陵有色",
+    "HVLP4"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 10,
+    "supply_shock": "铜矿供给偏紧",
+    "demand_boost": "AI数据中心+新能源车铜需求",
+    "inventory_signal": "LME铜库存下降"
+  },
+  "conduction_path": {
+    "description": "全球铜矿资本开支不足→铜精矿紧→铜价上涨→铜箔/加工受益",
+    "steps": [
+      {
+        "step": 1,
+        "from": "铜矿资本开支不足",
+        "to": "铜精矿供给偏紧",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 2,
+        "from": "供给偏紧",
+        "to": "铜价上涨",
+        "lag_days": [
+          7,
+          14
+        ]
+      }
+    ],
+    "total_lag_days": [
+      14,
+      30
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "铜矿开采",
+    "bottleneck_reason": "全球铜矿品位下降+新矿开发周期7-10年",
+    "pricing_power_rating": "B"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "铜矿龙头",
+      "stocks": [
+        {
+          "code": "600362",
+          "name": "江西铜业",
+          "reason": "铜冶炼#1·07-10+5.28%",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "601168",
+          "name": "西部矿业",
+          "reason": "铜+铅锌+锂·PE14·07-10+5%",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "000630",
+          "name": "铜陵有色",
+          "reason": "铜冶炼#2",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "铜箔+铜加工",
+      "stocks": [
+        {
+          "code": "000878",
+          "name": "云南铜业",
+          "reason": "HVLP4铜箔",
+          "position_tag": "💎潜伏"
+        },
+        {
+          "code": "600110",
+          "name": "诺德股份",
+          "reason": "HVLP4+锂电铜箔",
+          "position_tag": "💎潜伏"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "LME铜月涨>10%",
+      "TC加工费触底"
+    ],
+    "bearish": [
+      "铜矿复产",
+      "铜库存回升"
+    ],
+    "data_sources": [
+      "LME铜价",
+      "SMM现货"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "全球经济增长放缓"
+  },
+  "entry_timing": {
+    "buy_signal_1": "LME铜月涨>10%",
+    "avg_hold_days": 30,
+    "stop_loss": "LME铜回撤>10%"
+  },
+  "historical_validation": {
+    "verification_count": 1,
+    "win_rate_pct": 65,
+    "avg_gain_pct": 15,
+    "last_verified": "2026-07-10"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "chain_id": "semiconductor_material",
+  "name": "半导体材料/国产替代链",
+  "version": "v2.0",
+  "category": "AI/半导体",
+  "confidence_weight": 70,
+  "normalized_tags": [
+    "半导体材料",
+    "光刻胶",
+    "靶材",
+    "石英",
+    "雅克科技",
+    "江化微",
+    "国产替代"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 10,
+    "supply_shock": "日本/美国出口管制收紧",
+    "demand_boost": "国内晶圆厂扩产"
+  },
+  "conduction_path": {
+    "description": "出口管制→国产替代加速→材料验证导入→批量供货→业绩兑",
+    "steps": [
+      {
+        "step": 1,
+        "from": "出口管制",
+        "to": "国产替代紧迫性提升",
+        "lag_days": [
+          1,
+          7
+        ]
+      },
+      {
+        "step": 2,
+        "from": "国产替代",
+        "to": "材料企业验证导入",
+        "lag_days": [
+          14,
+          30
+        ]
+      },
+      {
+        "step": 3,
+        "from": "验证导入",
+        "to": "批量供货",
+        "lag_days": [
+          30,
+          90
+        ]
+      }
+    ],
+    "total_lag_days": [
+      14,
+      90
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "高端光刻胶/前驱体",
+    "bottleneck_reason": "ArF/EUV光刻胶、前驱体国产化率<10%",
+    "pricing_power_rating": "A"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "高端材料国产替代",
+      "stocks": [
+        {
+          "code": "603078",
+          "name": "江化微",
+          "reason": "湿电子化学品G5龙头·SMIC供应商",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "603931",
+          "name": "格林达",
+          "reason": "TMAH显影液垄断",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "603650",
+          "name": "彤程新材",
+          "reason": "光刻胶+CCL",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002409",
+          "name": "雅克科技",
+          "reason": "前驱体SOD+WF6",
+          "position_tag": "💎潜伏"
+        },
+        {
+          "code": "603306",
+          "name": "华懋科技",
+          "reason": "光刻胶单体·Panasonic合作",
+          "position_tag": "💎潜伏"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "靶材+石英+硅片",
+      "stocks": [
+        {
+          "code": "600206",
+          "name": "有研新材",
+          "reason": "HBM靶材唯一·🎯530",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "603688",
+          "name": "石英股份",
+          "reason": "高纯石英砂·坩埚唯一",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "600330",
+          "name": "天通股份",
+          "reason": "铌酸锂晶圆·光通信材料",
+          "position_tag": "💎潜伏"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "晶圆厂产能利用率>85%",
+      "国产材料验证通过"
+    ],
+    "bearish": [
+      "出口管制放松",
+      "验证不通过"
+    ],
+    "data_sources": [
+      "公司公告",
+      "晶圆厂产能利用率"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "晶圆厂扩产放缓",
+    "supply_failure": "出口管制放松"
+  },
+  "entry_timing": {
+    "buy_signal_1": "出口管制升级公告",
+    "avg_hold_days": 60,
+    "stop_loss": "国产替代逻辑反转"
+  },
+  "historical_validation": {
+    "verification_count": 2,
+    "win_rate_pct": 70,
+    "avg_gain_pct": 25,
+    "last_verified": "2026-07-11"
+  }
+}

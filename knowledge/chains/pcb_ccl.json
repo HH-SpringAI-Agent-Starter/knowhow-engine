@@ -1,0 +1,149 @@
+{
+  "chain_id": "pcb_ccl",
+  "name": "PCB/CCL覆铜板涨价链",
+  "version": "v2.0",
+  "category": "AI/半导体",
+  "confidence_weight": 75,
+  "normalized_tags": [
+    "PCB涨价",
+    "CCL",
+    "生益科技",
+    "沪电股份",
+    "深南电路",
+    "圣泉集团",
+    "AI PCB"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 15,
+    "supply_shock": "电子布供给偏紧",
+    "demand_boost": "AI服务器PCB层数翻倍+新能源汽车需求"
+  },
+  "conduction_path": {
+    "description": "AI PCB层数翻倍→CCL需求爆发→电子布/玻纤受益→PPE树脂成瓶颈",
+    "steps": [
+      {
+        "step": 1,
+        "from": "AI服务器",
+        "to": "PCB层数翻倍(16-18→28-36)",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 2,
+        "from": "PCB需求增长",
+        "to": "CCL覆铜板涨价",
+        "lag_days": [
+          14,
+          30
+        ]
+      },
+      {
+        "step": 3,
+        "from": "CCL扩产",
+        "to": "PPE树脂瓶颈",
+        "lag_days": [
+          30,
+          60
+        ]
+      }
+    ],
+    "total_lag_days": [
+      14,
+      60
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "PPE树脂",
+    "bottleneck_reason": "高速CCL核心材料，国内仅圣泉集团量产",
+    "pricing_power_rating": "A"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "PPE树脂",
+      "stocks": [
+        {
+          "code": "605589",
+          "name": "圣泉集团",
+          "reason": "PPE树脂3000吨国内唯一量产",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "CCL/PCB龙头",
+      "stocks": [
+        {
+          "code": "600183",
+          "name": "生益科技",
+          "reason": "CCL全球#2国内#1",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002916",
+          "name": "深南电路",
+          "reason": "PCB+封装基板",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002463",
+          "name": "沪电股份",
+          "reason": "AI PCB全球#3·绑定NVIDIA",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "603650",
+          "name": "彤程新材",
+          "reason": "PCB链三重共振",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    },
+    "T4_catalytic": {
+      "description": "PCB相关",
+      "stocks": [
+        {
+          "code": "002080",
+          "name": "中材科技",
+          "reason": "电子布+玻纤+风电",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002745",
+          "name": "木林森",
+          "reason": "PCB三次涨价一字封死",
+          "position_tag": "⭐S级A"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "CCL涨价函",
+      "电子布涨价",
+      "PCB满产"
+    ],
+    "bearish": [
+      "CCL涨价函被拒"
+    ],
+    "data_sources": [
+      "PCB行业报价",
+      "公司公告"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "AI服务器出货不及预期"
+  },
+  "entry_timing": {
+    "buy_signal_1": "CCL涨价函发布",
+    "avg_hold_days": 30,
+    "stop_loss": "板块龙头跌停"
+  },
+  "historical_validation": {
+    "verification_count": 3,
+    "win_rate_pct": 75,
+    "avg_gain_pct": 30,
+    "last_verified": "2026-06-24"
+  }
+}

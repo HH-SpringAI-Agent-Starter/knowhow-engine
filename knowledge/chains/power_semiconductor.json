@@ -1,0 +1,156 @@
+{
+  "chain_id": "power_semiconductor",
+  "name": "功率半导体/晶圆产能涨价链",
+  "version": "v2.0",
+  "category": "AI/半导体",
+  "confidence_weight": 72,
+  "normalized_tags": [
+    "功率半导体",
+    "晶圆产能",
+    "涨价函",
+    "华微电子",
+    "斯达半导",
+    "士兰微",
+    "IGBT",
+    "SiC"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 10,
+    "supply_shock": "8寸晶圆产能饱和涨价函密集",
+    "demand_boost": "AI电源+新能源车+工业回暖"
+  },
+  "conduction_path": {
+    "description": "晶圆代工涨价→IDM/设计成本传递→涨价→业绩兑现",
+    "steps": [
+      {
+        "step": 1,
+        "from": "AI+新能源车需求",
+        "to": "功率半导体需求增长",
+        "lag_days": [
+          3,
+          7
+        ]
+      },
+      {
+        "step": 2,
+        "from": "需求增长+8寸饱和",
+        "to": "涨价函发布",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 3,
+        "from": "涨价函",
+        "to": "业绩兑现",
+        "lag_days": [
+          30,
+          60
+        ]
+      }
+    ],
+    "total_lag_days": [
+      7,
+      60
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "8寸晶圆产能",
+    "bottleneck_reason": "功率半导体主要用8寸成熟制程，扩产少，供给刚性",
+    "pricing_power_rating": "A"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "传统IDM·涨价函直接受益",
+      "stocks": [
+        {
+          "code": "600360",
+          "name": "华微电子",
+          "reason": "功率IDM瓶颈·已摘帽·涨函",
+          "position_tag": "💼持仓·⭐S级B"
+        },
+        {
+          "code": "600460",
+          "name": "士兰微",
+          "reason": "功率IDM全链+BCD产线",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "605358",
+          "name": "立昂微",
+          "reason": "重掺硅片+8寸瓶颈",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002079",
+          "name": "苏州固锝",
+          "reason": "功率IDM·晶圆TOP9·Q1+134%",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "SiC/设计（⚠区分赛道）",
+      "stocks": [
+        {
+          "code": "603290",
+          "name": "斯达半导",
+          "reason": "SiC模块#1·🟡崩盘降级",
+          "position_tag": "🟡观察"
+        },
+        {
+          "code": "605111",
+          "name": "新洁能",
+          "reason": "功率设计·🟡崩盘降级",
+          "position_tag": "🟡观察"
+        },
+        {
+          "code": "002617",
+          "name": "露笑科技",
+          "reason": "SiC衬底·07-10跌停",
+          "position_tag": "🟡观察"
+        },
+        {
+          "code": "600703",
+          "name": "三安光电",
+          "reason": "化合物半导体",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "涨价函密集发布",
+      "8寸产能利用率>90%",
+      "IDM业绩环比增长"
+    ],
+    "bearish": [
+      "涨价函不执行",
+      "产能利用率下降"
+    ],
+    "data_sources": [
+      "涨价函公告",
+      "季报"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "新能源车放缓",
+    "price_reversal": "板块连跌2日>5%"
+  },
+  "entry_timing": {
+    "buy_signal_1": "涨价函公告当日或次日回调",
+    "avg_hold_days": 45,
+    "stop_loss": "板块连跌2日>5%"
+  },
+  "historical_validation": {
+    "verification_count": 2,
+    "win_rate_pct": 72,
+    "avg_gain_pct": 28,
+    "last_verified": "2026-07-10",
+    "failure_cases": [
+      "07-10斯达/新洁能/露笑结构错判→传统IDM vs SiC路径不同"
+    ]
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "chain_id": "soda_ash_pure",
+  "name": "纯碱/玻璃产业链",
+  "version": "v2.0",
+  "category": "化工/材料",
+  "confidence_weight": 60,
+  "normalized_tags": [
+    "纯碱涨价",
+    "天然碱",
+    "博源化工",
+    "金晶科技",
+    "纯碱期货"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 15,
+    "supply_shock": "天然碱矿供给减少",
+    "demand_boost": "光伏玻璃+浮法玻璃需求"
+  },
+  "conduction_path": {
+    "description": "纯碱供给减少→纯碱涨价→玻璃企业成本上升",
+    "steps": [
+      {
+        "step": 1,
+        "from": "天然碱矿",
+        "to": "纯碱供需紧张",
+        "lag_days": [
+          3,
+          7
+        ]
+      },
+      {
+        "step": 2,
+        "from": "纯碱涨价",
+        "to": "玻璃成本上升",
+        "lag_days": [
+          14,
+          30
+        ]
+      }
+    ],
+    "total_lag_days": [
+      14,
+      30
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "天然碱矿",
+    "bottleneck_reason": "天然碱资源稀缺，扩产周期长",
+    "pricing_power_rating": "B"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "天然碱龙头",
+      "stocks": [
+        {
+          "code": "000683",
+          "name": "博源化工",
+          "reason": "天然碱860万吨扩产·成本低50%",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "玻璃企业",
+      "stocks": [
+        {
+          "code": "600586",
+          "name": "金晶科技",
+          "reason": "纯碱客户+光伏玻璃",
+          "position_tag": "💎潜伏"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "纯碱期货涨>15%",
+      "纯碱库存连续下降"
+    ],
+    "bearish": [
+      "纯碱期货回落",
+      "光伏玻璃减产"
+    ],
+    "data_sources": [
+      "郑商所纯碱主力",
+      "百川纯碱报价"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "光伏玻璃需求不及预期"
+  },
+  "entry_timing": {
+    "buy_signal_1": "纯碱期货月涨>15%",
+    "avg_hold_days": 30,
+    "stop_loss": "纯碱回撤>10%"
+  },
+  "historical_validation": {
+    "verification_count": 1,
+    "win_rate_pct": 60,
+    "avg_gain_pct": 15,
+    "last_verified": "2026-06-28"
+  }
+}

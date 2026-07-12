@@ -1,0 +1,126 @@
+{
+  "chain_id": "robotics",
+  "name": "人形机器人/Neura产业链",
+  "version": "v2.0",
+  "category": "AI/半导体",
+  "confidence_weight": 65,
+  "normalized_tags": [
+    "人形机器人",
+    "Neura",
+    "双环传动",
+    "龙溪股份",
+    "丝杠"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 10,
+    "demand_boost": "人形机器人产业化加速",
+    "policy_catalyst": "北京/上海/深圳机器人产业政策"
+  },
+  "conduction_path": {
+    "description": "人形机器人产业化→核心零部件（关节/丝杠/轴承）需求爆发",
+    "steps": [
+      {
+        "step": 1,
+        "from": "产业化加速",
+        "to": "核心零部件验证导入",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 2,
+        "from": "验证导入",
+        "to": "批量订单落地",
+        "lag_days": [
+          30,
+          90
+        ]
+      }
+    ],
+    "total_lag_days": [
+      30,
+      90
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "关节/精密传动",
+    "bottleneck_reason": "关节轴承精度极高，扩产周期长",
+    "pricing_power_rating": "B"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "核心零部件",
+      "stocks": [
+        {
+          "code": "600592",
+          "name": "龙溪股份",
+          "reason": "关节轴承全球第一",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002472",
+          "name": "双环传动",
+          "reason": "Neura+台积电AI",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "驱动+整机",
+      "stocks": [
+        {
+          "code": "600580",
+          "name": "卧龙电驱",
+          "reason": "电机驱动",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "000988",
+          "name": "华工科技",
+          "reason": "激光加工",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002747",
+          "name": "埃斯顿",
+          "reason": "机器人整机",
+          "position_tag": "💎潜伏"
+        },
+        {
+          "code": "002031",
+          "name": "巨轮智能",
+          "reason": "机器人涨停",
+          "position_tag": "⭐S级A"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "Neura/宇树量产公告",
+      "机器人板块涨停>3只"
+    ],
+    "bearish": [
+      "产业化推迟"
+    ],
+    "data_sources": [
+      "Neura官网",
+      "产业政策"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "产业化低于预期"
+  },
+  "entry_timing": {
+    "buy_signal_1": "机器人首次涨停>3只",
+    "avg_hold_days": 30,
+    "stop_loss": "龙头跌停"
+  },
+  "historical_validation": {
+    "verification_count": 2,
+    "win_rate_pct": 65,
+    "avg_gain_pct": 20,
+    "last_verified": "2026-07-11"
+  }
+}

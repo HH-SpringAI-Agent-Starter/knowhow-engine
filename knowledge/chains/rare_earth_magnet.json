@@ -1,0 +1,100 @@
+{
+  "chain_id": "rare_earth_magnet",
+  "name": "稀土永磁产业链",
+  "version": "v2.0",
+  "category": "化工/材料",
+  "confidence_weight": 60,
+  "normalized_tags": [
+    "稀土",
+    "永磁",
+    "北方稀土",
+    "中科三环",
+    "稀土配额"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 20,
+    "supply_shock": "稀土配额收紧/缅甸矿中断",
+    "demand_boost": "新能源车永磁需求增长",
+    "policy_catalyst": "稀土开采总量控制"
+  },
+  "conduction_path": {
+    "description": "稀土配额收紧→氧化镨钕涨价→永磁材料成本上升",
+    "steps": [
+      {
+        "step": 1,
+        "from": "稀土配额收紧",
+        "to": "氧化镨钕供给减少",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 2,
+        "from": "供给减少",
+        "to": "永磁材料涨价",
+        "lag_days": [
+          14,
+          30
+        ]
+      }
+    ],
+    "total_lag_days": [
+      14,
+      30
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "稀土开采配额",
+    "bottleneck_reason": "政策限制开采总量",
+    "pricing_power_rating": "B"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "稀土资源龙头",
+      "stocks": [
+        {
+          "code": "600111",
+          "name": "北方稀土",
+          "reason": "稀土全球#1",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "000970",
+          "name": "中科三环",
+          "reason": "稀土永磁材料",
+          "position_tag": "💎潜伏"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "氧化镨钕涨价",
+      "稀土配额收紧"
+    ],
+    "bearish": [
+      "稀土价格回落",
+      "配额增加"
+    ],
+    "data_sources": [
+      "百川稀土报价",
+      "工信部公告"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "新能源车产销下滑",
+    "substitution_failure": "无稀土电机"
+  },
+  "entry_timing": {
+    "buy_signal_1": "氧化镨钕月涨>20%",
+    "avg_hold_days": 30,
+    "stop_loss": "氧化镨钕回落"
+  },
+  "historical_validation": {
+    "verification_count": 1,
+    "win_rate_pct": 60,
+    "avg_gain_pct": 15,
+    "last_verified": "2026-06-28"
+  }
+}

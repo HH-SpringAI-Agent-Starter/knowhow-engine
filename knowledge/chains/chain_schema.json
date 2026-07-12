@@ -1,0 +1,99 @@
+{
+  "_schema_version": "1.0",
+  "_description": "因果链结构化Decision Flow Schema——每条链是Agent可执行的规则引擎",
+  "_fields": {
+    "chain_id": "唯一ID，如 sulfur_phosphorus",
+    "name": "链条名称",
+    "version": "版本号 v1.0",
+    "last_updated": "最后更新时间",
+    "category": "分类: AI/半导体 | 化工/材料 | 宏观/政策",
+    "confidence_weight": "经验权重 0-100（基于历史验证次数）",
+    "normalized_tags": ["搜索标签"],
+    
+    "trigger_conditions": {
+      "price_up_pct_30d": "涨价幅度阈值（单月涨>%触发）",
+      "supply_shock": "供给冲击事件",
+      "demand_boost": "需求拉动事件",
+      "policy_catalyst": "政策催化",
+      "inventory_signal": "库存方向信号",
+      "other": "其他触发条件"
+    },
+    
+    "conduction_path": {
+      "description": "传导路径的文字描述",
+      "steps": [
+        {
+          "step": 1,
+          "from": "上游",
+          "to": "中游",
+          "mechanism": "传导机制",
+          "lag_days": "传导天数区间 [min, max]"
+        }
+      ],
+      "total_lag_days": "总传导天数区间 [min, max]"
+    },
+    
+    "bottleneck_analysis": {
+      "bottleneck_stage": "瓶颈环节",
+      "bottleneck_reason": "为什么是瓶颈",
+      "pricing_power_rating": "定价权评分 A/B/C"
+    },
+    
+    "ticker_mapping": {
+      "T1_core_bottleneck": {
+        "description": "核心瓶颈标的（弹性最大）",
+        "stocks": [
+          {
+            "code": "600141",
+            "name": "兴发集团",
+            "reason": "核心弹性来源",
+            "position_tag": "标签: 💼持仓/⭐S级/💎潜伏 etc",
+            "entry_signal": "买入信号",
+            "exit_condition": "退出条件"
+          }
+        ]
+      },
+      "T2_supply_demand_beneficiary": {
+        "description": "供需缺口受益",
+        "stocks": []
+      },
+      "T3_full_chain": {
+        "description": "全产业链一体化",
+        "stocks": []
+      },
+      "T4_catalytic": {
+        "description": "转型催化/资源驱动",
+        "stocks": []
+      }
+    },
+    
+    "verification_signals": {
+      "bullish": ["看多验证信号清单（可量化跟踪）"],
+      "bearish": ["看空/失效信号"],
+      "data_sources": ["验证数据来源"]
+    },
+    
+    "failure_conditions": {
+      "demand_failure": "需求端失效条件",
+      "supply_failure": "供给端失效条件",
+      "substitution_failure": "替代品冲击",
+      "policy_failure": "政策转向",
+      "price_reversal": "价格回落>N%触发退出"
+    },
+    
+    "entry_timing": {
+      "buy_signal_1": "买入信号1",
+      "buy_signal_2": "买入信号2",
+      "avg_hold_days": "平均持有天数",
+      "stop_loss": "止损条件"
+    },
+    
+    "historical_validation": {
+      "verification_count": "验证次数",
+      "win_rate_pct": "胜率",
+      "avg_gain_pct": "平均收益",
+      "last_verified": "最后验证日期",
+      "failure_cases": ["失败案例"]
+    }
+  }
+}

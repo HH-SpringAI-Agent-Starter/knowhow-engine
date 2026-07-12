@@ -1,0 +1,129 @@
+{
+  "chain_id": "sulfur_phosphorus",
+  "name": "硫磺→磷化工/钛白粉产业链",
+  "version": "v2.0",
+  "category": "化工/材料",
+  "confidence_weight": 78,
+  "normalized_tags": [
+    "硫磺涨价",
+    "磷化工",
+    "黄磷",
+    "硫酸法钛白粉",
+    "氯化法钛白粉",
+    "兴发集团",
+    "龙佰集团"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 30,
+    "supply_shock": "硫磺供应减少（炼油减产/地缘扰动/海关进口下降）",
+    "demand_boost": "磷肥需求旺季、钛白粉开工率回升",
+    "policy_catalyst": null,
+    "inventory_signal": "硫酸库存下降、硫磺港口库存下降",
+    "other": "原油暴跌→硫磺副产减少"
+  },
+  "conduction_path": {
+    "description": "硫磺→硫酸→磷化工（磷酸/黄磷/磷肥）→农业需求；硫磺→硫酸法减产→氯化法钛白粉涨价",
+    "steps": [
+      {
+        "step": 1,
+        "from": "硫磺",
+        "to": "硫酸",
+        "mechanism": "硫磺是硫酸核心原料，成本占比70%+",
+        "lag_days": [
+          3,
+          7
+        ]
+      },
+      {
+        "step": 2,
+        "from": "硫酸",
+        "to": "磷化工",
+        "mechanism": "磷酸/黄磷生产消耗大量硫酸",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 3,
+        "from": "硫酸法生产成本上升",
+        "to": "氯化法钛白粉",
+        "mechanism": "硫酸法减产后氯化法涨价",
+        "lag_days": [
+          14,
+          21
+        ]
+      }
+    ],
+    "total_lag_days": [
+      14,
+      28
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "硫磺供应",
+    "bottleneck_reason": "硫磺是炼油副产，供给刚性，短期无法大幅扩产",
+    "pricing_power_rating": "A"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "核心瓶颈标的（弹性最大）",
+      "stocks": [
+        {
+          "code": "600141",
+          "name": "兴发集团",
+          "reason": "磷矿+黄磷+磷酸全链",
+          "position_tag": "⭐S级B·产业链"
+        },
+        {
+          "code": "002601",
+          "name": "龙佰集团",
+          "reason": "氯化法钛白粉龙头",
+          "position_tag": "⭐S级B·产业链"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "供需缺口受益",
+      "stocks": [
+        {
+          "code": "600096",
+          "name": "云天化",
+          "reason": "磷矿+磷酸铁锂",
+          "position_tag": "💎潜伏池"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "硫磺价格单月涨>30%",
+      "硫酸开工率连续下降",
+      "钛白粉价格上调"
+    ],
+    "bearish": [
+      "硫磺库存回升",
+      "原油价格大幅下跌"
+    ],
+    "data_sources": [
+      "百川盈孚硫磺价格",
+      "隆众资讯硫酸开工率"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "磷肥需求减弱",
+    "supply_failure": "北美炼厂产能恢复→硫磺供给增加",
+    "price_reversal": "硫磺从高点回撤>15%强制降级"
+  },
+  "entry_timing": {
+    "buy_signal_1": "硫磺月涨>30%后3-7天入场",
+    "avg_hold_days": 45,
+    "stop_loss": "硫磺回撤>15%"
+  },
+  "historical_validation": {
+    "verification_count": 3,
+    "win_rate_pct": 78,
+    "avg_gain_pct": 35,
+    "last_verified": "2026-07-08"
+  }
+}

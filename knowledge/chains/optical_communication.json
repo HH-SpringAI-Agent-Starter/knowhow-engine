@@ -1,0 +1,142 @@
+{
+  "chain_id": "optical_communication",
+  "name": "光通信/光纤/磷化铟产业链",
+  "version": "v2.0",
+  "category": "AI/半导体",
+  "confidence_weight": 75,
+  "normalized_tags": [
+    "光模块",
+    "磷化铟",
+    "InP",
+    "光纤",
+    "CPO",
+    "永鼎",
+    "光迅",
+    "长飞光纤"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 30,
+    "supply_shock": "磷化铟衬底短缺70%",
+    "demand_boost": "AI数据中心1.6T光模块需求爆发",
+    "other": "海外VRT/NVDA数据中心资本开支指引"
+  },
+  "conduction_path": {
+    "description": "AI算力需求→1.6T光模块→InP衬底瓶颈(缺70%)→衬底涨价→光纤扩容",
+    "steps": [
+      {
+        "step": 1,
+        "from": "AI算力扩张",
+        "to": "1.6T光模块需求",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 2,
+        "from": "1.6T光模块",
+        "to": "InP衬底缺口70%",
+        "lag_days": [
+          3,
+          7
+        ]
+      },
+      {
+        "step": 3,
+        "from": "InP衬底缺口",
+        "to": "衬底价格暴涨",
+        "lag_days": [
+          7,
+          14
+        ]
+      }
+    ],
+    "total_lag_days": [
+      14,
+      35
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "磷化铟衬底",
+    "bottleneck_reason": "全球仅2-3家可量产，扩产周期12-18月",
+    "pricing_power_rating": "A"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "核心瓶颈标的",
+      "stocks": [
+        {
+          "code": "002428",
+          "name": "云南锗业",
+          "reason": "InP衬底用锗龙头",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002281",
+          "name": "光迅科技",
+          "reason": "磷化铟扩产10x→光芯片IDM",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "弹性大",
+      "stocks": [
+        {
+          "code": "600105",
+          "name": "永鼎股份",
+          "reason": "光纤+超导",
+          "position_tag": "💼持仓"
+        },
+        {
+          "code": "601869",
+          "name": "长飞光纤",
+          "reason": "光纤预制棒全球#2",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "600487",
+          "name": "亨通光电",
+          "reason": "CPO保偏光纤",
+          "position_tag": "⚠️观察"
+        },
+        {
+          "code": "002396",
+          "name": "星网锐捷",
+          "reason": "补涨确认·7/8涨停",
+          "position_tag": "⭐S级A"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "1.6T光模块出货增长",
+      "InP衬底价格上行",
+      "海外CapEx上调"
+    ],
+    "bearish": [
+      "CPO技术绕过InP",
+      "InP扩产加速"
+    ],
+    "data_sources": [
+      "lightcounting",
+      "海外巨头CapEx季报"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "AI资本开支收缩",
+    "substitution_failure": "SiP替代InP"
+  },
+  "entry_timing": {
+    "buy_signal_1": "光通信板块涨停>3只",
+    "avg_hold_days": 45,
+    "stop_loss": "板块龙头跌停"
+  },
+  "historical_validation": {
+    "verification_count": 2,
+    "win_rate_pct": 100,
+    "avg_gain_pct": 50,
+    "last_verified": "2026-07-08"
+  }
+}

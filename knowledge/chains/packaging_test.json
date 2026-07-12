@@ -1,0 +1,133 @@
+{
+  "chain_id": "packaging_test",
+  "name": "先进封装/封测产业链",
+  "version": "v2.0",
+  "category": "AI/半导体",
+  "confidence_weight": 68,
+  "normalized_tags": [
+    "先进封装",
+    "封测",
+    "HBM",
+    "通富微电",
+    "长电科技",
+    "太极实业"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 10,
+    "supply_shock": "CoWoS产能持续紧缺",
+    "demand_boost": "AI芯片封装需求爆发"
+  },
+  "conduction_path": {
+    "description": "AI芯片增长→CoWoS产能紧缺→封测涨价→国产替代加速",
+    "steps": [
+      {
+        "step": 1,
+        "from": "AI芯片出货大涨",
+        "to": "CoWoS产能紧缺",
+        "lag_days": [
+          3,
+          7
+        ]
+      },
+      {
+        "step": 2,
+        "from": "产能紧缺",
+        "to": "封测涨价",
+        "lag_days": [
+          14,
+          30
+        ]
+      }
+    ],
+    "total_lag_days": [
+      14,
+      30
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "CoWoS封装产能",
+    "bottleneck_reason": "台积电CoWoS供不应求",
+    "pricing_power_rating": "B"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "封测龙头",
+      "stocks": [
+        {
+          "code": "002156",
+          "name": "通富微电",
+          "reason": "先进封装龙头·AMD深度绑定",
+          "position_tag": "💼持仓·成本68"
+        },
+        {
+          "code": "600584",
+          "name": "长电科技",
+          "reason": "封测全球#3",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002185",
+          "name": "华天科技",
+          "reason": "封测+存储",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "600667",
+          "name": "太极实业",
+          "reason": "半导体工程+封测",
+          "position_tag": "💼持仓"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "存储受益",
+      "stocks": [
+        {
+          "code": "000021",
+          "name": "深科技",
+          "reason": "HBM封测龙头",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "603986",
+          "name": "兆易创新",
+          "reason": "存储涨价+AI PC",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "001309",
+          "name": "德明利",
+          "reason": "存储模组龙头",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "台积电CoWoS扩产",
+      "通富业绩增长"
+    ],
+    "bearish": [
+      "NVDA转单其他方案"
+    ],
+    "data_sources": [
+      "台积电法说会",
+      "AMD/NVDA财报"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "AI芯片需求放缓"
+  },
+  "entry_timing": {
+    "buy_signal_1": "通富回调企稳",
+    "avg_hold_days": 60,
+    "stop_loss": "通富跌破成本"
+  },
+  "historical_validation": {
+    "verification_count": 1,
+    "win_rate_pct": 68,
+    "avg_gain_pct": 40,
+    "last_verified": "2026-06-24"
+  }
+}

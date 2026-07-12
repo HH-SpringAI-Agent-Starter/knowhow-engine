@@ -1,0 +1,128 @@
+{
+  "chain_id": "electronic_gas",
+  "name": "电子特气（WF6六氟化钨断供）",
+  "version": "v2.0",
+  "category": "AI/半导体",
+  "confidence_weight": 72,
+  "normalized_tags": [
+    "六氟化钨",
+    "WF6",
+    "电子特气",
+    "昊华科技",
+    "凯美特气",
+    "断供"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 232,
+    "supply_shock": "日本25% WF6产能永久退出",
+    "demand_boost": "3D NAND扩产+先进制程镀膜需求增长"
+  },
+  "conduction_path": {
+    "description": "日本WF6产能永久退出→全球供应缺口25%→价格暴涨232%→国内替代企业受益",
+    "steps": [
+      {
+        "step": 1,
+        "from": "日本WF6产能永久退出",
+        "to": "全球供应缺口25%",
+        "lag_days": [
+          1,
+          3
+        ]
+      },
+      {
+        "step": 2,
+        "from": "供应缺口",
+        "to": "WF6价格暴涨",
+        "lag_days": [
+          3,
+          7
+        ]
+      },
+      {
+        "step": 3,
+        "from": "WF6涨价",
+        "to": "其他电子特气跟涨",
+        "lag_days": [
+          14,
+          30
+        ]
+      }
+    ],
+    "total_lag_days": [
+      3,
+      30
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "WF6产能",
+    "bottleneck_reason": "日本25%产能永久退出，国内扩产周期12-18月",
+    "pricing_power_rating": "A"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "核心受益",
+      "stocks": [
+        {
+          "code": "600378",
+          "name": "昊华科技",
+          "reason": "WF6国内产能最大6000吨规划",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002409",
+          "name": "雅克科技",
+          "reason": "WF6规划2000吨+前驱体SOD",
+          "position_tag": "💎潜伏池"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "电子特气平台",
+      "stocks": [
+        {
+          "code": "002549",
+          "name": "凯美特气",
+          "reason": "电子特气回收龙头·🟡Q1亏损",
+          "position_tag": "🟡观察"
+        },
+        {
+          "code": "002971",
+          "name": "和远气体",
+          "reason": "WF6试产500吨+氦气",
+          "position_tag": "🥈观察"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "WF6价格月涨>50%",
+      "日本产能退出确认",
+      "国内扩产公告"
+    ],
+    "bearish": [
+      "价格回撤>15%",
+      "替代技术出现"
+    ],
+    "data_sources": [
+      "百川盈孚特气报价",
+      "公司公告"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "3D NAND减产",
+    "supply_failure": "日本产能评估偏差",
+    "price_reversal": "WF6回撤>15%"
+  },
+  "entry_timing": {
+    "buy_signal_1": "WF6月涨>50%确认",
+    "avg_hold_days": 60,
+    "stop_loss": "WF6回撤>15%"
+  },
+  "historical_validation": {
+    "verification_count": 1,
+    "win_rate_pct": 72,
+    "avg_gain_pct": 40,
+    "last_verified": "2026-06-22"
+  }
+}

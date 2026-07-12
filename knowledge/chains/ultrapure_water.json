@@ -1,0 +1,117 @@
+{
+  "chain_id": "ultrapure_water",
+  "name": "超纯水/Rubin液冷催化",
+  "version": "v1.0",
+  "category": "AI/半导体",
+  "confidence_weight": 60,
+  "normalized_tags": [
+    "超纯水",
+    "液冷",
+    "Rubin",
+    "沃顿科技",
+    "创元科技",
+    "至纯科技",
+    "上海洗霸"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 10,
+    "supply_shock": null,
+    "demand_boost": "Rubin液冷对超纯水需求爆发",
+    "other": "超纯水板块7/10集体异动"
+  },
+  "conduction_path": {
+    "description": "Rubin液冷标配→超纯水需求爆发→膜/系统/设备受益",
+    "steps": [
+      {
+        "step": 1,
+        "from": "Rubin液冷",
+        "to": "超纯水需求爆发",
+        "lag_days": [
+          3,
+          7
+        ]
+      },
+      {
+        "step": 2,
+        "from": "超纯水需求",
+        "to": "反渗透膜/系统集成受益",
+        "lag_days": [
+          7,
+          14
+        ]
+      }
+    ],
+    "total_lag_days": [
+      7,
+      14
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "反渗透膜",
+    "bottleneck_reason": "超纯水RO膜被陶氏/海德能垄断，国产替代空间大",
+    "pricing_power_rating": "B"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "超纯水核心标的",
+      "stocks": [
+        {
+          "code": "000920",
+          "name": "沃顿科技",
+          "reason": "超纯水反渗透膜龙头·7/10涨停",
+          "position_tag": "💎潜伏"
+        },
+        {
+          "code": "000551",
+          "name": "创元科技",
+          "reason": "苏净半导体超纯水",
+          "position_tag": "💎潜伏"
+        }
+      ]
+    },
+    "T4_catalytic": {
+      "description": "配套受益",
+      "stocks": [
+        {
+          "code": "603200",
+          "name": "上海洗霸",
+          "reason": "电子级纯水",
+          "position_tag": "💎潜伏"
+        },
+        {
+          "code": "002011",
+          "name": "盾安环境",
+          "reason": "液冷热管理",
+          "position_tag": "💎潜伏"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "超纯水板块继续涨停",
+      "RO膜国产替代新闻"
+    ],
+    "bearish": [
+      "板块冲高回落"
+    ],
+    "data_sources": [
+      "板块成交数据",
+      "公司公告"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "液冷不选超纯水方案"
+  },
+  "entry_timing": {
+    "buy_signal_1": "沃顿回踩12以下",
+    "avg_hold_days": 15,
+    "stop_loss": "板块龙头跌停"
+  },
+  "historical_validation": {
+    "verification_count": 0,
+    "win_rate_pct": 60,
+    "avg_gain_pct": 10,
+    "last_verified": "2026-07-10"
+  }
+}

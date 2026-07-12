@@ -1,0 +1,117 @@
+{
+  "chain_id": "mlcc",
+  "name": "MLCC/被动元器件涨价链",
+  "version": "v2.0",
+  "category": "AI/半导体",
+  "confidence_weight": 72,
+  "normalized_tags": [
+    "MLCC涨价",
+    "被动元件",
+    "风华高科",
+    "博迁新材",
+    "洁美科技",
+    "村田"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 15,
+    "supply_shock": "村田/三星电机产能退出",
+    "demand_boost": "AI服务器+新能源车需求复苏"
+  },
+  "conduction_path": {
+    "description": "AI服务器MLCC用量翻倍→村田退出→涨价→镍粉/BT载带受益",
+    "steps": [
+      {
+        "step": 1,
+        "from": "AI服务器",
+        "to": "MLCC需求翻倍",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 2,
+        "from": "需求+供给退出",
+        "to": "MLCC涨价",
+        "lag_days": [
+          14,
+          30
+        ]
+      }
+    ],
+    "total_lag_days": [
+      21,
+      45
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "镍粉(80nm)",
+    "bottleneck_reason": "博迁新材是国内唯一80nm镍粉供应商",
+    "pricing_power_rating": "A"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "核心瓶颈",
+      "stocks": [
+        {
+          "code": "605376",
+          "name": "博迁新材",
+          "reason": "80nm MLCC镍粉唯一+6/18涨停",
+          "position_tag": "⭐S级BC"
+        },
+        {
+          "code": "002859",
+          "name": "洁美科技",
+          "reason": "MLCC载带全球#1+6/18涨停",
+          "position_tag": "⭐S级BC"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "受益标的",
+      "stocks": [
+        {
+          "code": "000636",
+          "name": "风华高科",
+          "reason": "MLCC国内龙头",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "000733",
+          "name": "振华科技",
+          "reason": "MLCC受益",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "MLCC现货涨价",
+      "村田/三星减产",
+      "博迁镍粉报价上调"
+    ],
+    "bearish": [
+      "MLCC价格回落"
+    ],
+    "data_sources": [
+      "DRAMeXchange",
+      "富昌电子"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "消费电子需求疲软",
+    "substitution_failure": "镍粉替代"
+  },
+  "entry_timing": {
+    "buy_signal_1": "MLCC满产+涨函",
+    "avg_hold_days": 45,
+    "stop_loss": "MLCC价格回落"
+  },
+  "historical_validation": {
+    "verification_count": 1,
+    "win_rate_pct": 72,
+    "avg_gain_pct": 25,
+    "last_verified": "2026-06-21"
+  }
+}

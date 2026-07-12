@@ -1,0 +1,119 @@
+{
+  "chain_id": "fluorochemical",
+  "name": "氟化工/制冷剂涨价链",
+  "version": "v2.0",
+  "category": "化工/材料",
+  "confidence_weight": 68,
+  "normalized_tags": [
+    "氟化工",
+    "制冷剂",
+    "巨化股份",
+    "萤石",
+    "金石资源"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 20,
+    "supply_shock": "萤石矿山整顿/制冷剂配额缩减",
+    "demand_boost": "空调旺季",
+    "policy_catalyst": "基加利修正案+配额制"
+  },
+  "conduction_path": {
+    "description": "萤石矿整顿→萤石涨价→氢氟酸涨价→制冷剂配额缩减→制冷剂涨价",
+    "steps": [
+      {
+        "step": 1,
+        "from": "萤石矿整顿",
+        "to": "萤石涨价",
+        "lag_days": [
+          3,
+          7
+        ]
+      },
+      {
+        "step": 2,
+        "from": "萤石涨价",
+        "to": "氢氟酸涨价",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 3,
+        "from": "配额缩减",
+        "to": "制冷剂涨价",
+        "lag_days": [
+          14,
+          30
+        ]
+      }
+    ],
+    "total_lag_days": [
+      14,
+      30
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "萤石矿资源",
+    "bottleneck_reason": "萤石不可再生，储采比仅10年",
+    "pricing_power_rating": "B"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "萤石龙头",
+      "stocks": [
+        {
+          "code": "603505",
+          "name": "金石资源",
+          "reason": "萤石龙头+电子级HF上游",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    },
+    "T2_supply_demand_beneficiary": {
+      "description": "氟化工受益",
+      "stocks": [
+        {
+          "code": "600160",
+          "name": "巨化股份",
+          "reason": "制冷剂全球#1·🟡利好出尽",
+          "position_tag": "🟡观察"
+        },
+        {
+          "code": "002407",
+          "name": "多氟多",
+          "reason": "电子级HF+LiPF6",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "萤石月涨>20%",
+      "R32现货上涨",
+      "制冷剂配额公告"
+    ],
+    "bearish": [
+      "配额执行不及预期"
+    ],
+    "data_sources": [
+      "百川氟化工报价"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "空调产销下滑",
+    "substitution_failure": "HFO替代HFC"
+  },
+  "entry_timing": {
+    "buy_signal_1": "萤石月涨>20%",
+    "avg_hold_days": 30,
+    "stop_loss": "价格回撤>15%"
+  },
+  "historical_validation": {
+    "verification_count": 1,
+    "win_rate_pct": 68,
+    "avg_gain_pct": 20,
+    "last_verified": "2026-06-18"
+  }
+}

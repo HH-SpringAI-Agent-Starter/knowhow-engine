@@ -1,0 +1,122 @@
+{
+  "chain_id": "liquid_cooling",
+  "name": "液冷/数据中心温控产业链",
+  "version": "v2.0",
+  "category": "AI/半导体",
+  "confidence_weight": 72,
+  "normalized_tags": [
+    "液冷",
+    "温控",
+    "英维克",
+    "科华数据",
+    "VRT",
+    "超纯水"
+  ],
+  "trigger_conditions": {
+    "price_up_pct_30d": 15,
+    "supply_shock": null,
+    "demand_boost": "AI芯片功耗300W→1000W+，液冷刚需",
+    "other": "海外VRT/CEG暴涨映射"
+  },
+  "conduction_path": {
+    "description": "AI芯片功耗飙升→风冷不够→液冷成刚需→冷却液/液冷板/管路→超纯水需求",
+    "steps": [
+      {
+        "step": 1,
+        "from": "AI芯片功耗增长",
+        "to": "液冷渗透率从10%→50%+",
+        "lag_days": [
+          7,
+          14
+        ]
+      },
+      {
+        "step": 2,
+        "from": "液冷",
+        "to": "超纯水需求爆发",
+        "lag_days": [
+          14,
+          30
+        ]
+      }
+    ],
+    "total_lag_days": [
+      7,
+      30
+    ]
+  },
+  "bottleneck_analysis": {
+    "bottleneck_stage": "数据中心冷却与供电",
+    "bottleneck_reason": "VRT暴涨10倍，液冷是数据中心扩张瓶颈",
+    "pricing_power_rating": "A"
+  },
+  "ticker_mapping": {
+    "T1_core_bottleneck": {
+      "description": "温控+供电",
+      "stocks": [
+        {
+          "code": "002837",
+          "name": "英维克",
+          "reason": "数据中心温控龙头·VRT对标",
+          "position_tag": "⭐S级B"
+        },
+        {
+          "code": "002335",
+          "name": "科华数据",
+          "reason": "KKR+英伟达+供电瓶颈+IDC收费站",
+          "position_tag": "⭐S级B"
+        }
+      ]
+    },
+    "T4_catalytic": {
+      "description": "超纯水Rubin催化",
+      "stocks": [
+        {
+          "code": "000920",
+          "name": "沃顿科技",
+          "reason": "超纯水反渗透膜龙头·7/10涨停",
+          "position_tag": "💎潜伏"
+        },
+        {
+          "code": "000551",
+          "name": "创元科技",
+          "reason": "苏净超纯水",
+          "position_tag": "💎潜伏"
+        },
+        {
+          "code": "002011",
+          "name": "盾安环境",
+          "reason": "液冷热管理",
+          "position_tag": "💎潜伏"
+        }
+      ]
+    }
+  },
+  "verification_signals": {
+    "bullish": [
+      "VRT创新高",
+      "液冷招标比例>50%"
+    ],
+    "bearish": [
+      "VRT暴跌>10%"
+    ],
+    "data_sources": [
+      "VRT股价",
+      "IDC圈"
+    ]
+  },
+  "failure_conditions": {
+    "demand_failure": "AI资本开支下滑"
+  },
+  "entry_timing": {
+    "buy_signal_1": "VRT创新高+1-2周进入A股",
+    "avg_hold_days": 60,
+    "stop_loss": "VRT跌>15%"
+  },
+  "historical_validation": {
+    "verification_count": 2,
+    "win_rate_pct": 72,
+    "avg_gain_pct": 35,
+    "last_verified": "2026-07-10"
+  }
+}
